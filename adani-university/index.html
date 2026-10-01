@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adani University — Ahmedabad, Gujarat</title>
+  <meta name="description" content="Official student portal for Adani University, Ahmedabad. Explore campus life, academics, fests, food, navigation, CGPA calculator and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR ═══ -->
+  <nav id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Adani University Home">
+        <div class="logo-icon">AU</div>
+        <span class="logo-text">Adani University</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero"     class="nav-link active" data-section="hero">Home</a></li>
+        <li><a href="#academic" class="nav-link" data-section="academic">Academics</a></li>
+        <li><a href="#fests"    class="nav-link" data-section="fests">Fests</a></li>
+        <li><a href="#food"     class="nav-link" data-section="food">Food</a></li>
+        <li><a href="#navigate" class="nav-link" data-section="navigate">Campus Map</a></li>
+        <li><a href="#cgpa"     class="nav-link" data-section="cgpa">CGPA Calc</a></li>
+        <li><a href="#clubs"    class="nav-link" data-section="clubs">Clubs</a></li>
+        <li><a href="#timetable" class="nav-link" data-section="timetable">Timetable</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme" title="Toggle dark/light mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <a href="#contact" class="btn btn-primary nav-cta">Student Portal</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════ HERO ═══ -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <img src="https://www.adaniuni.ac.in/wp-content/uploads/2026/09/Website_Desktop_Banner-29-09-2026.webp" alt="Adani University Campus" class="hero-img" fetchpriority="high" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge animate-fade-up">
+        <span>🎓</span> Ranked #1 Private University in Gujarat 2024
+      </div>
+      <h1 class="hero-title animate-fade-up delay-1">
+        Shape Your Future at<br />
+        <span class="gradient-text">Adani University</span>
+      </h1>
+      <p class="hero-subtitle animate-fade-up delay-2">
+        Where innovation meets tradition. A world-class campus experience crafted for tomorrow's leaders.
+      </p>
+      <div class="hero-actions animate-fade-up delay-3">
+        <a href="#academic" class="btn btn-primary btn-lg">Explore Campus</a>
+        <a href="#cgpa"     class="btn btn-ghost btn-lg">CGPA Calculator</a>
+      </div>
+      <div class="hero-stats animate-fade-up delay-4">
+        <div class="stat-item">
+          <span class="stat-number" data-target="8500">0</span>
+          <span class="stat-label">Students</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="120">0</span>
+          <span class="stat-label">Faculty</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="45">0</span>
+          <span class="stat-label">Programmes</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="200">0</span>
+          <span class="stat-label">Acres Campus</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#academic" class="scroll-indicator" aria-label="Scroll down">
+      <div class="scroll-dot"></div>
+    </a>
+  </section>
+
+  <!-- ════════════════════════════════════ QUICK LINKS ═══ -->
+  <section class="quick-links-bar">
+    <div class="container">
+      <div class="quick-links-grid">
+        <a href="#academic" class="quick-card" id="ql-academic">
+          <div class="quick-icon">📚</div>
+          <div class="quick-text">
+            <strong>Academic Life</strong>
+            <span>Programmes & Courses</span>
+          </div>
+        </a>
+        <a href="#fests" class="quick-card" id="ql-fests">
+          <div class="quick-icon">🎉</div>
+          <div class="quick-text">
+            <strong>Fests & Events</strong>
+            <span>Utsav, Technika & more</span>
+          </div>
+        </a>
+        <a href="#food" class="quick-card" id="ql-food">
+          <div class="quick-icon">🍽️</div>
+          <div class="quick-text">
+            <strong>Food Court</strong>
+            <span>Menus & Canteens</span>
+          </div>
+        </a>
+        <a href="#cgpa" class="quick-card" id="ql-cgpa">
+          <div class="quick-icon">🧮</div>
+          <div class="quick-text">
+            <strong>CGPA Calculator</strong>
+            <span>Track your GPA</span>
+          </div>
+        </a>
+        <a href="#navigate" class="quick-card" id="ql-nav">
+          <div class="quick-icon">🗺️</div>
+          <div class="quick-text">
+            <strong>Campus Map</strong>
+            <span>Navigate buildings</span>
+          </div>
+        </a>
+        <a href="#clubs" class="quick-card" id="ql-clubs">
+          <div class="quick-icon">🏆</div>
+          <div class="quick-text">
+            <strong>Clubs & Sports</strong>
+            <span>Join a community</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ ACADEMIC LIFE ═══ -->
+  <section id="academic" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">📖 Academic Life</span>
+        <h2 class="section-title">World-Class Education</h2>
+        <p class="section-subtitle">Four cutting-edge schools designed to push boundaries and build future innovators.</p>
+      </div>
+
+      <div class="schools-grid">
+        <div class="school-card" id="school-engineering">
+          <div class="school-icon">⚙️</div>
+          <h3>School of Engineering</h3>
+          <p>B.Tech, M.Tech in Computer Science, Mechanical, Civil, Electrical and more. AICTE approved.</p>
+          <ul class="school-courses">
+            <li>B.Tech CSE (AI/ML, Data Science)</li>
+            <li>B.Tech Mechanical Engineering</li>
+            <li>M.Tech Electronics</li>
+            <li>Ph.D Research Programme</li>
+          </ul>
+          <div class="school-meta">
+            <span>🎓 1200 seats</span>
+            <span>⭐ NAAC A+</span>
+          </div>
+        </div>
+        <div class="school-card" id="school-management">
+          <div class="school-icon">💼</div>
+          <h3>School of Management</h3>
+          <p>Industry-integrated MBA and BBA programmes with global exposure and placements at Fortune 500.</p>
+          <ul class="school-courses">
+            <li>MBA (Finance, Marketing, HR)</li>
+            <li>BBA General / Digital Marketing</li>
+            <li>Executive MBA</li>
+            <li>PGDM – 2 Year Programme</li>
+          </ul>
+          <div class="school-meta">
+            <span>🎓 600 seats</span>
+            <span>⭐ AMBA Accredited</span>
+          </div>
+        </div>
+        <div class="school-card featured" id="school-science">
+          <div class="school-badge">Most Popular</div>
+          <div class="school-icon">🔬</div>
+          <h3>School of Science</h3>
+          <p>Cutting-edge research labs and interdisciplinary programmes that bridge science and technology.</p>
+          <ul class="school-courses">
+            <li>B.Sc Physics / Chemistry / Biotech</li>
+            <li>M.Sc Applied Mathematics</li>
+            <li>B.Sc Environmental Science</li>
+            <li>M.Sc Data Science</li>
+          </ul>
+          <div class="school-meta">
+            <span>🎓 400 seats</span>
+            <span>⭐ DST Funded</span>
+          </div>
+        </div>
+        <div class="school-card" id="school-design">
+          <div class="school-icon">🎨</div>
+          <h3>School of Design</h3>
+          <p>Creative programmes in industrial design, architecture, and digital media with state-of-the-art studios.</p>
+          <ul class="school-courses">
+            <li>B.Des Industrial Design</li>
+            <li>B.Des Interaction Design</li>
+            <li>B.Arch (5-Year)</li>
+            <li>M.Des Communication Design</li>
+          </ul>
+          <div class="school-meta">
+            <span>🎓 300 seats</span>
+            <span>⭐ NID Collaborator</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic Life image + library -->
+      <div class="academic-showcase">
+        <div class="showcase-img-wrap">
+          <img src="https://www.adaniuni.ac.in/wp-content/uploads/2026/09/Peer-Learning-Sparks-Mathematical-Curiosity-1.webp" alt="Students studying at Adani University" class="showcase-img" loading="lazy" />
+        </div>
+        <div class="showcase-content">
+          <h3>Life Beyond Classrooms</h3>
+          <p>Our 3-storey central library houses over 1,00,000+ books, 50,000 e-journals and dedicated research zones available 24/7.</p>
+          <div class="facility-list">
+            <div class="facility-item"><span>🏛️</span> Central Library – 3 floors, 24/7</div>
+            <div class="facility-item"><span>💻</span> Innovation Lab – 500+ workstations</div>
+            <div class="facility-item"><span>🔭</span> Research Centers – 12 specialised labs</div>
+            <div class="facility-item"><span>🏃</span> Sports Complex – Olympic standard</div>
+            <div class="facility-item"><span>🏥</span> Medical Centre – 24-hr on-campus</div>
+            <div class="facility-item"><span>🌿</span> Eco-friendly Campus – IGBC Gold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FESTS ═══ -->
+  <section id="fests" class="section section-dark">
+    <div class="fest-bg-image">
+      <img src="https://www.adaniuni.ac.in/wp-content/uploads/2026/02/cultural-image.jpeg" alt="Adani University Cultural Fest" loading="lazy" />
+      <div class="fest-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">🎉 Campus Fests</span>
+        <h2 class="section-title">Where Memories Are Made</h2>
+        <p class="section-subtitle">Three signature festivals that bring the campus alive every year.</p>
+      </div>
+
+      <div class="fests-grid">
+        <div class="fest-card" id="fest-utsav">
+          <div class="fest-card-header utsav">
+            <div class="fest-emoji">🎊</div>
+            <div class="fest-info">
+              <h3>UTSAV</h3>
+              <span class="fest-subtitle">Annual Cultural Fest</span>
+            </div>
+            <div class="fest-date">Feb 2025</div>
+          </div>
+          <div class="fest-card-body">
+            <p>3 days of music, dance, drama, fashion shows and standup comedy. Headlined by national artists and student performances from 50+ colleges.</p>
+            <div class="fest-events">
+              <span class="event-tag">🎵 Battle of Bands</span>
+              <span class="event-tag">💃 Dance Off</span>
+              <span class="event-tag">🎭 Dramatics</span>
+              <span class="event-tag">🎨 Art Exhibition</span>
+              <span class="event-tag">👗 Fashion Show</span>
+              <span class="event-tag">🎤 Open Mic</span>
+            </div>
+            <div class="fest-meta">
+              <span>👥 5000+ attendees</span>
+              <span>🏆 ₹5L prize pool</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fest-card featured-fest" id="fest-technika">
+          <div class="fest-card-header technika">
+            <div class="fest-emoji">🤖</div>
+            <div class="fest-info">
+              <h3>TECHNIKA</h3>
+              <span class="fest-subtitle">Tech & Innovation Fest</span>
+            </div>
+            <div class="fest-date">Nov 2024</div>
+          </div>
+          <div class="fest-card-body">
+            <p>The ultimate playground for tech enthusiasts. Hackathons, robotics, AI challenges and startup pitching competitions that attract top minds.</p>
+            <div class="fest-events">
+              <span class="event-tag">💻 48-hr Hackathon</span>
+              <span class="event-tag">🤖 Robo Wars</span>
+              <span class="event-tag">🧠 AI Challenge</span>
+              <span class="event-tag">🚀 Startup Pitch</span>
+              <span class="event-tag">🔌 Electronics Expo</span>
+              <span class="event-tag">🎮 Gaming Tournament</span>
+            </div>
+            <div class="fest-meta">
+              <span>👥 3000+ participants</span>
+              <span>🏆 ₹10L prize pool</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fest-card" id="fest-sportica">
+          <div class="fest-card-header sportica">
+            <div class="fest-emoji">⚽</div>
+            <div class="fest-info">
+              <h3>SPORTICA</h3>
+              <span class="fest-subtitle">Annual Sports Meet</span>
+            </div>
+            <div class="fest-date">Dec 2024</div>
+          </div>
+          <div class="fest-card-body">
+            <p>5-day inter-college sports extravaganza featuring 25+ sports, attracting athletes from Gujarat and neighbouring states.</p>
+            <div class="fest-events">
+              <span class="event-tag">⚽ Football</span>
+              <span class="event-tag">🏀 Basketball</span>
+              <span class="event-tag">🏏 Cricket T20</span>
+              <span class="event-tag">🎾 Tennis</span>
+              <span class="event-tag">🏊 Swimming</span>
+              <span class="event-tag">🥊 Boxing</span>
+            </div>
+            <div class="fest-meta">
+              <span>👥 2000+ athletes</span>
+              <span>🏆 ₹3L prize pool</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Countdown timer for next fest -->
+      <div class="fest-countdown" id="fest-countdown-wrap">
+        <h3>⏳ Next Fest: TECHNIKA 2025</h3>
+        <p>November 14–16, 2025 — Registration now open!</p>
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="countdown-block">
+            <span id="cd-days" class="cd-number">00</span>
+            <span class="cd-label">Days</span>
+          </div>
+          <span class="cd-colon">:</span>
+          <div class="countdown-block">
+            <span id="cd-hours" class="cd-number">00</span>
+            <span class="cd-label">Hours</span>
+          </div>
+          <span class="cd-colon">:</span>
+          <div class="countdown-block">
+            <span id="cd-mins" class="cd-number">00</span>
+            <span class="cd-label">Mins</span>
+          </div>
+          <span class="cd-colon">:</span>
+          <div class="countdown-block">
+            <span id="cd-secs" class="cd-number">00</span>
+            <span class="cd-label">Secs</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary" id="register-fest-btn">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOD ═══ -->
+  <section id="food" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🍽️ Food Court</span>
+        <h2 class="section-title">Fuel Your Day</h2>
+        <p class="section-subtitle">10+ eateries across campus offering diverse cuisines to satisfy every craving.</p>
+      </div>
+
+      <div class="food-showcase">
+        <div class="food-image-wrap">
+          <img src="https://www.adaniuni.ac.in/wp-content/uploads/2026/09/Educational-Industry-Visit-to-eInfochips-1-1024x768.webp" alt="Adani University campus activities" loading="lazy" />
+        </div>
+        <div class="food-details">
+          <h3>Central Food Court</h3>
+          <p>Open 7:00 AM – 10:00 PM · 600-seater capacity</p>
+          <div class="food-filters" role="tablist" aria-label="Food categories">
+            <button class="food-filter active" data-filter="all" role="tab" aria-selected="true" id="tab-all">All</button>
+            <button class="food-filter" data-filter="north" role="tab" aria-selected="false" id="tab-north">North Indian</button>
+            <button class="food-filter" data-filter="south" role="tab" aria-selected="false" id="tab-south">South Indian</button>
+            <button class="food-filter" data-filter="fast" role="tab" aria-selected="false" id="tab-fast">Fast Food</button>
+            <button class="food-filter" data-filter="healthy" role="tab" aria-selected="false" id="tab-healthy">Healthy</button>
+          </div>
+          <div class="food-menu-grid" id="food-menu-grid" role="tabpanel"></div>
+        </div>
+      </div>
+
+      <div class="canteen-grid">
+        <div class="canteen-card" id="canteen-spice">
+          <div class="canteen-icon">🌶️</div>
+          <h4>Spice Junction</h4>
+          <p>North Indian thalis, rotis, dal makhani, biryani</p>
+          <div class="canteen-info">
+            <span>⏰ 8 AM – 9 PM</span>
+            <span>📍 Block A</span>
+            <span>⭐ 4.7</span>
+          </div>
+        </div>
+        <div class="canteen-card" id="canteen-dosa">
+          <div class="canteen-icon">🥞</div>
+          <h4>Dosa Den</h4>
+          <p>Masala dosa, idli, vada, filter coffee, sambar</p>
+          <div class="canteen-info">
+            <span>⏰ 7 AM – 8 PM</span>
+            <span>📍 Block C</span>
+            <span>⭐ 4.8</span>
+          </div>
+        </div>
+        <div class="canteen-card" id="canteen-brew">
+          <div class="canteen-icon">☕</div>
+          <h4>Brew Lab</h4>
+          <p>Specialty coffee, sandwiches, pastries, smoothies</p>
+          <div class="canteen-info">
+            <span>⏰ 7 AM – 11 PM</span>
+            <span>📍 Library</span>
+            <span>⭐ 4.9</span>
+          </div>
+        </div>
+        <div class="canteen-card" id="canteen-global">
+          <div class="canteen-icon">🍜</div>
+          <h4>Global Bites</h4>
+          <p>Chinese, Italian, Mexican, Thai – international flavours</p>
+          <div class="canteen-info">
+            <span>⏰ 11 AM – 9 PM</span>
+            <span>📍 Block D</span>
+            <span>⭐ 4.6</span>
+          </div>
+        </div>
+        <div class="canteen-card" id="canteen-green">
+          <div class="canteen-icon">🥗</div>
+          <h4>Green Bowl</h4>
+          <p>Salads, grain bowls, smoothie bars, vegan options</p>
+          <div class="canteen-info">
+            <span>⏰ 8 AM – 8 PM</span>
+            <span>📍 Sports Wing</span>
+            <span>⭐ 4.5</span>
+          </div>
+        </div>
+        <div class="canteen-card" id="canteen-street">
+          <div class="canteen-icon">🍡</div>
+          <h4>Street Bites</h4>
+          <p>Pav bhaji, chaat, pani puri, momo, bhel puri</p>
+          <div class="canteen-info">
+            <span>⏰ 10 AM – 10 PM</span>
+            <span>📍 Main Gate</span>
+            <span>⭐ 4.8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ CAMPUS MAP ═══ -->
+  <section id="navigate" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🗺️ Campus Navigation</span>
+        <h2 class="section-title">Find Your Way Around</h2>
+        <p class="section-subtitle">Explore our 200-acre campus with an interactive building guide.</p>
+      </div>
+
+      <div class="campus-nav-layout">
+        <div class="campus-map-container">
+          <div class="campus-map" id="campus-map" role="img" aria-label="Interactive campus map">
+            <!-- SVG Map -->
+            <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" class="map-svg" aria-hidden="true">
+              <!-- Background -->
+              <rect width="700" height="500" fill="url(#mapGrad)" rx="12"/>
+              <defs>
+                <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1a2a1a;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#0d1a0d;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+
+              <!-- Roads -->
+              <path d="M 0 250 L 700 250" stroke="#2a4a2a" stroke-width="18" />
+              <path d="M 350 0 L 350 500" stroke="#2a4a2a" stroke-width="18" />
+              <path d="M 0 400 L 700 400" stroke="#2a4a2a" stroke-width="10" />
+              <path d="M 175 0 L 175 500" stroke="#2a4a2a" stroke-width="10" />
+              <path d="M 525 0 L 525 500" stroke="#2a4a2a" stroke-width="10" />
+
+              <!-- Green areas -->
+              <ellipse cx="87" cy="125" rx="70" ry="60" fill="#1a3a1a" opacity="0.6"/>
+              <ellipse cx="612" cy="125" rx="70" ry="60" fill="#1a3a1a" opacity="0.6"/>
+              <ellipse cx="350" cy="420" rx="80" ry="50" fill="#1a3a1a" opacity="0.6"/>
+              <text x="87" y="125" text-anchor="middle" fill="#4caf50" font-size="18">🌳</text>
+              <text x="612" y="125" text-anchor="middle" fill="#4caf50" font-size="18">🌳</text>
+              <text x="350" y="425" text-anchor="middle" fill="#4caf50" font-size="18">🌳</text>
+
+              <!-- Lake -->
+              <ellipse cx="87" cy="380" rx="65" ry="45" fill="#0d2b3e" stroke="#1565c0" stroke-width="2" opacity="0.8"/>
+              <text x="87" y="384" text-anchor="middle" fill="#64b5f6" font-size="12" font-weight="bold">LAKE</text>
+
+              <!-- Buildings -->
+              <!-- Main Academic Block -->
+              <rect x="270" y="160" width="160" height="80" rx="6" fill="#1e3a5f" stroke="#4fc3f7" stroke-width="2" class="map-building" data-building="main" />
+              <text x="350" y="200" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">MAIN ACADEMIC</text>
+              <text x="350" y="214" text-anchor="middle" fill="#4fc3f7" font-size="9">Block A · B · C</text>
+
+              <!-- Library -->
+              <rect x="420" y="50" width="90" height="70" rx="6" fill="#4a148c" stroke="#ce93d8" stroke-width="2" class="map-building" data-building="library"/>
+              <text x="465" y="83" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">LIBRARY</text>
+              <text x="465" y="97" text-anchor="middle" fill="#ce93d8" font-size="9">24 / 7</text>
+
+              <!-- Admin Block -->
+              <rect x="200" y="50" width="90" height="70" rx="6" fill="#b71c1c" stroke="#ef9a9a" stroke-width="2" class="map-building" data-building="admin"/>
+              <text x="245" y="83" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">ADMIN</text>
+              <text x="245" y="97" text-anchor="middle" fill="#ef9a9a" font-size="9">Block D</text>
+
+              <!-- Hostel Boys -->
+              <rect x="50" y="140" width="90" height="60" rx="6" fill="#1b5e20" stroke="#a5d6a7" stroke-width="2" class="map-building" data-building="hostel-boys"/>
+              <text x="95" y="168" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">HOSTEL</text>
+              <text x="95" y="181" text-anchor="middle" fill="#a5d6a7" font-size="8">Boys Block</text>
+
+              <!-- Hostel Girls -->
+              <rect x="560" y="140" width="90" height="60" rx="6" fill="#880e4f" stroke="#f48fb1" stroke-width="2" class="map-building" data-building="hostel-girls"/>
+              <text x="605" y="168" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">HOSTEL</text>
+              <text x="605" y="181" text-anchor="middle" fill="#f48fb1" font-size="8">Girls Block</text>
+
+              <!-- Sports Complex -->
+              <rect x="540" y="290" width="120" height="80" rx="6" fill="#e65100" stroke="#ffcc02" stroke-width="2" class="map-building" data-building="sports"/>
+              <text x="600" y="327" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">SPORTS</text>
+              <text x="600" y="341" text-anchor="middle" fill="#ffcc02" font-size="9">Complex</text>
+
+              <!-- Food Court -->
+              <rect x="270" y="290" width="120" height="70" rx="6" fill="#f57f17" stroke="#fff176" stroke-width="2" class="map-building" data-building="food"/>
+              <text x="330" y="322" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">FOOD COURT</text>
+              <text x="330" y="336" text-anchor="middle" fill="#fff176" font-size="9">🍽️ 600 seats</text>
+
+              <!-- Auditorium -->
+              <rect x="50" y="290" width="100" height="70" rx="6" fill="#37474f" stroke="#90a4ae" stroke-width="2" class="map-building" data-building="auditorium"/>
+              <text x="100" y="322" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">AUDITORIUM</text>
+              <text x="100" y="336" text-anchor="middle" fill="#90a4ae" font-size="8">Cap. 2000</text>
+
+              <!-- Innovation Lab -->
+              <rect x="400" y="290" width="100" height="70" rx="6" fill="#006064" stroke="#80deea" stroke-width="2" class="map-building" data-building="lab"/>
+              <text x="450" y="322" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">INNOVATION</text>
+              <text x="450" y="336" text-anchor="middle" fill="#80deea" font-size="8">LAB</text>
+
+              <!-- Main Gate -->
+              <rect x="316" y="460" width="68" height="35" rx="4" fill="#263238" stroke="#78909c" stroke-width="2"/>
+              <text x="350" y="482" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">MAIN GATE</text>
+
+              <!-- Medical -->
+              <rect x="50" y="50" width="80" height="55" rx="6" fill="#c62828" stroke="#ef9a9a" stroke-width="2" class="map-building" data-building="medical"/>
+              <text x="90" y="75" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">🏥 MED</text>
+              <text x="90" y="88" text-anchor="middle" fill="#ef9a9a" font-size="8">Centre</text>
+
+              <!-- Compass Rose -->
+              <g transform="translate(655,40)">
+                <circle cx="0" cy="0" r="22" fill="#0d1a0d" stroke="#4caf50" stroke-width="1.5"/>
+                <text x="0" y="-8" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">N</text>
+                <text x="0" y="16" text-anchor="middle" fill="#999" font-size="8">S</text>
+                <text x="12" y="5" text-anchor="middle" fill="#999" font-size="8">E</text>
+                <text x="-12" y="5" text-anchor="middle" fill="#999" font-size="8">W</text>
+                <line x1="0" y1="-18" x2="0" y2="18" stroke="#4caf50" stroke-width="1"/>
+                <line x1="-18" y1="0" x2="18" y2="0" stroke="#4caf50" stroke-width="1"/>
+              </g>
+            </svg>
+
+            <!-- Location tooltip -->
+            <div class="map-tooltip" id="map-tooltip" role="tooltip" aria-live="polite"></div>
+          </div>
+          <p class="map-hint">👆 Click on a building to see details</p>
+        </div>
+
+        <div class="building-info-panel" id="building-info-panel">
+          <div class="building-default-state">
+            <div class="default-icon">🏛️</div>
+            <h4>Explore Campus</h4>
+            <p>Click any building on the map to view details, timings and directions.</p>
+          </div>
+          <div class="building-detail-state" id="building-detail" hidden>
+            <div class="building-detail-icon" id="detail-icon"></div>
+            <h4 id="detail-name"></h4>
+            <p id="detail-desc"></p>
+            <div class="detail-meta" id="detail-meta"></div>
+            <a href="#contact" class="btn btn-primary btn-sm" id="get-directions-btn">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════ CGPA CALCULATOR ═══ -->
+  <section id="cgpa" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">🧮 CGPA Calculator</span>
+        <h2 class="section-title">Track Your GPA</h2>
+        <p class="section-subtitle">Calculate your semester GPA and cumulative CGPA with ease.</p>
+      </div>
+
+      <div class="cgpa-layout">
+        <div class="cgpa-calculator" id="cgpa-calculator">
+          <div class="cgpa-tabs" role="tablist" aria-label="Calculator tabs">
+            <button class="cgpa-tab active" data-tab="sgpa" role="tab" id="tab-sgpa" aria-selected="true" aria-controls="panel-sgpa">Semester GPA</button>
+            <button class="cgpa-tab" data-tab="cgpa" role="tab" id="tab-cgpa-btn" aria-selected="false" aria-controls="panel-cgpa">CGPA</button>
+            <button class="cgpa-tab" data-tab="percentage" role="tab" id="tab-pct" aria-selected="false" aria-controls="panel-percentage">% to CGPA</button>
+          </div>
+
+          <!-- SGPA Calculator -->
+          <div class="cgpa-panel active" id="panel-sgpa" role="tabpanel" aria-labelledby="tab-sgpa">
+            <div class="subjects-list" id="subjects-list">
+              <!-- rows injected by JS -->
+            </div>
+            <button class="btn btn-ghost btn-sm" id="add-subject-btn">+ Add Subject</button>
+            <div class="sgpa-result" id="sgpa-result" aria-live="polite">
+              <div class="result-label">Your Semester GPA</div>
+              <div class="result-value" id="sgpa-value">—</div>
+              <div class="result-grade" id="sgpa-grade"></div>
+            </div>
+            <button class="btn btn-primary" id="calc-sgpa-btn">Calculate GPA</button>
+          </div>
+
+          <!-- CGPA Calculator -->
+          <div class="cgpa-panel" id="panel-cgpa" role="tabpanel" aria-labelledby="tab-cgpa-btn" hidden>
+            <div class="semesters-list" id="semesters-list">
+              <!-- rows injected by JS -->
+            </div>
+            <button class="btn btn-ghost btn-sm" id="add-sem-btn">+ Add Semester</button>
+            <div class="sgpa-result" id="cgpa-result" aria-live="polite">
+              <div class="result-label">Your CGPA</div>
+              <div class="result-value" id="cgpa-value">—</div>
+              <div class="result-grade" id="cgpa-grade"></div>
+            </div>
+            <button class="btn btn-primary" id="calc-cgpa-btn">Calculate CGPA</button>
+          </div>
+
+          <!-- Percentage Converter -->
+          <div class="cgpa-panel" id="panel-percentage" role="tabpanel" aria-labelledby="tab-pct" hidden>
+            <div class="converter-group">
+              <label for="pct-input">Enter Percentage (%)</label>
+              <input type="number" id="pct-input" min="0" max="100" placeholder="e.g. 85" class="calc-input" aria-label="Percentage value"/>
+              <div class="converter-result" aria-live="polite">
+                <div class="result-label">Equivalent CGPA (10-point scale)</div>
+                <div class="result-value" id="pct-cgpa-value">—</div>
+              </div>
+              <button class="btn btn-primary" id="convert-pct-btn">Convert</button>
+            </div>
+            <div class="grade-table-wrap">
+              <h4>Grade Scale Reference</h4>
+              <table class="grade-table" aria-label="Grade scale reference">
+                <thead>
+                  <tr><th>Grade</th><th>Points</th><th>%&nbsp;Range</th><th>Desc</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>O</td><td>10</td><td>≥ 90</td><td>Outstanding</td></tr>
+                  <tr><td>A+</td><td>9</td><td>80–89</td><td>Excellent</td></tr>
+                  <tr><td>A</td><td>8</td><td>70–79</td><td>Very Good</td></tr>
+                  <tr><td>B+</td><td>7</td><td>60–69</td><td>Good</td></tr>
+                  <tr><td>B</td><td>6</td><td>55–59</td><td>Above Avg</td></tr>
+                  <tr><td>C</td><td>5</td><td>50–54</td><td>Average</td></tr>
+                  <tr><td>P</td><td>4</td><td>45–49</td><td>Pass</td></tr>
+                  <tr><td>F</td><td>0</td><td>< 45</td><td>Fail</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="cgpa-sidebar">
+          <div class="cgpa-tip-card" id="cgpa-tips">
+            <h4>💡 Pro Tips</h4>
+            <ul>
+              <li>Keep a CGPA above 7.5 to be eligible for honours degree.</li>
+              <li>Minimum 8.0 CGPA required for research fellowship applications.</li>
+              <li>CGPA above 9.0 earns you a place on the Dean's List.</li>
+              <li>Backlogs reduce your CGPA significantly — clear them early.</li>
+              <li>Attendance below 75% blocks you from final exams.</li>
+            </ul>
+          </div>
+          <div class="cgpa-visual" id="cgpa-visual">
+            <h4>Performance Meter</h4>
+            <div class="cgpa-meter" id="cgpa-meter" role="img" aria-label="CGPA performance meter">
+              <svg viewBox="0 0 200 110" class="meter-svg">
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round"/>
+                <path id="meter-arc" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#meterGrad)" stroke-width="16" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
+                <defs>
+                  <linearGradient id="meterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ef4444"/>
+                    <stop offset="50%" stop-color="#f59e0b"/>
+                    <stop offset="100%" stop-color="#22c55e"/>
+                  </linearGradient>
+                </defs>
+                <text x="100" y="88" text-anchor="middle" class="meter-value" id="meter-display">0.0</text>
+                <text x="100" y="104" text-anchor="middle" class="meter-label">/ 10.0</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ CLUBS & SPORTS ═══ -->
+  <section id="clubs" class="section section-dark">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">🏆 Clubs & Sports</span>
+        <h2 class="section-title">Find Your Tribe</h2>
+        <p class="section-subtitle">40+ student-run clubs spanning technology, arts, sports and social impact.</p>
+      </div>
+
+      <div class="clubs-filter-bar" role="toolbar" aria-label="Club categories">
+        <button class="club-filter-btn active" data-club-cat="all" id="cf-all">All</button>
+        <button class="club-filter-btn" data-club-cat="tech" id="cf-tech">Tech</button>
+        <button class="club-filter-btn" data-club-cat="arts" id="cf-arts">Arts</button>
+        <button class="club-filter-btn" data-club-cat="sports" id="cf-sports">Sports</button>
+        <button class="club-filter-btn" data-club-cat="social" id="cf-social">Social</button>
+      </div>
+
+      <div class="clubs-grid" id="clubs-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ TIMETABLE ═══ -->
+  <section id="timetable" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">📅 Class Timetable</span>
+        <h2 class="section-title">Weekly Schedule</h2>
+        <p class="section-subtitle">Sample timetable for B.Tech CSE 3rd Semester. Select your branch to customize.</p>
+      </div>
+
+      <div class="timetable-controls">
+        <div class="tt-select-wrap">
+          <label for="tt-branch">Branch</label>
+          <select id="tt-branch" class="tt-select" aria-label="Select branch">
+            <option value="cse">CSE</option>
+            <option value="mech">Mechanical</option>
+            <option value="civil">Civil</option>
+            <option value="mba">MBA</option>
+          </select>
+        </div>
+        <div class="tt-select-wrap">
+          <label for="tt-sem">Semester</label>
+          <select id="tt-sem" class="tt-select" aria-label="Select semester">
+            <option value="1">Sem 1</option>
+            <option value="2">Sem 2</option>
+            <option value="3" selected>Sem 3</option>
+            <option value="4">Sem 4</option>
+            <option value="5">Sem 5</option>
+            <option value="6">Sem 6</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="load-timetable-btn">Load Schedule</button>
+      </div>
+
+      <div class="timetable-wrap">
+        <div class="timetable-scroll">
+          <table class="timetable" id="timetable" aria-label="Weekly class schedule">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+              </tr>
+            </thead>
+            <tbody id="timetable-body">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="timetable-note">📌 Note: Timetable is subject to changes. Check official portal for live updates.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ ANNOUNCEMENTS ═══ -->
+  <section id="notices" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">📢 Announcements</span>
+        <h2 class="section-title">Latest Updates</h2>
+        <p class="section-subtitle">Important notices, exam schedules and campus updates.</p>
+      </div>
+      <div class="notices-grid" id="notices-grid"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ CONTACT & FOOTER ═══ -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="footer-logo">
+            <div class="logo-icon large">AU</div>
+            <div>
+              <strong>Adani University</strong>
+              <span>Ahmedabad, Gujarat</span>
+            </div>
+          </div>
+          <p>Adani University, Shantigram, Nr. Vaishno Devi Circle, S.G. Highway, Ahmedabad – 382421, Gujarat, India.</p>
+          <div class="contact-links">
+            <a href="tel:+917940427000" class="contact-link" id="contact-phone">📞 +91-79-4042-7000</a>
+            <a href="mailto:info@adaniuniversity.ac.in" class="contact-link" id="contact-email">✉️ info@adaniuniversity.ac.in</a>
+            <a href="https://maps.google.com" target="_blank" rel="noopener" class="contact-link" id="contact-maps">📍 Get Directions</a>
+          </div>
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-btn" id="social-twitter" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn" id="social-instagram" aria-label="Instagram">📷</a>
+            <a href="#" class="social-btn" id="social-linkedin" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-btn" id="social-youtube" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <h3>Send Us a Message</h3>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-name">Full Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="Your name" autocomplete="name" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email</label>
+                <input type="email" id="cf-email" name="email" placeholder="your@email.com" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-subject">Subject</label>
+              <select id="cf-subject" name="subject" required>
+                <option value="">— Select a topic —</option>
+                <option value="admission">Admissions</option>
+                <option value="academics">Academics</option>
+                <option value="hostel">Hostel</option>
+                <option value="fees">Fees & Scholarships</option>
+                <option value="placements">Placements</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="4" placeholder="Write your query…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg w-full" id="contact-submit">Send Message 🚀</button>
+            <div class="form-success" id="form-success" hidden>
+              ✅ Message sent! We'll get back within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#academic">Academics</a>
+        <a href="#fests">Fests</a>
+        <a href="#food">Food</a>
+        <a href="#navigate">Campus Map</a>
+        <a href="#cgpa">CGPA Calc</a>
+        <a href="#clubs">Clubs</a>
+        <a href="#timetable">Timetable</a>
+      </div>
+      <p class="footer-copy">© 2025 Adani University, Ahmedabad. All rights reserved. | Made with ❤️ for AU students</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
