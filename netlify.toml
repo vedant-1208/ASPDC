@@ -1,0 +1,12 @@
+# Netlify Configuration for Adani University Campus Portal
+
+[build]
+  # Serve files from the adani-university directory as the website root
+  publish = "adani-university"
+
+[[redirects]]
+  # Redirect any requests to /adani-university/ to root
+  from = "/adani-university/*"
+  to = "/:splat"
+  status = 301
+  force = true
