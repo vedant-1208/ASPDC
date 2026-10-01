@@ -10,3 +10,10 @@
   to = "/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  # Friendly URL for admin portal
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
