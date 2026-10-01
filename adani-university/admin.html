@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adani University — Student Inquiries & Form Admin Portal</title>
+  <meta name="description" content="Admin dashboard for managing Adani University student submissions, admissions queries, and contact form details." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- ─── Admin Navigation Bar ──────────────────────────────── -->
+  <header class="admin-header">
+    <div class="header-inner">
+      <div class="brand-wrap">
+        <div class="brand-icon">🎓</div>
+        <div class="brand-text">
+          <h1>Adani University <span class="admin-badge">Admin</span></h1>
+          <p>Student Details, Inquiries & Netlify Form Submissions</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="live-status" id="status-indicator">
+          <span class="status-dot"></span>
+          <span>Connecting…</span>
+        </div>
+
+        <button class="btn btn-outline btn-sm" id="refresh-btn" title="Refresh submissions">
+          <span>🔄</span> <span class="btn-text">Refresh</span>
+        </button>
+
+        <button class="btn btn-outline btn-sm" id="sample-data-btn" title="Toggle sample student data">
+          ⚡ Load Sample Records
+        </button>
+
+        <button class="btn-icon" id="settings-btn" title="API Settings">⚙️</button>
+        <button class="btn-icon" id="theme-toggle" title="Toggle Dark/Light Mode">☀️</button>
+
+        <a href="index.html" class="btn btn-primary btn-sm" title="Go to main campus website">
+          🌐 View Campus Site
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Main Admin Container ──────────────────────────────── -->
+  <main class="admin-container">
+
+    <!-- KPI Metric Cards -->
+    <section class="metrics-grid" aria-label="Submission summary metrics">
+      <div class="metric-card">
+        <div class="metric-icon blue">📬</div>
+        <div class="metric-info">
+          <span class="metric-value" id="metric-total">0</span>
+          <span class="metric-label">Total Inquiries</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon gold">🎓</div>
+        <div class="metric-info">
+          <span class="metric-value" id="metric-admissions">0</span>
+          <span class="metric-label">Admissions</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon teal">📚</div>
+        <div class="metric-info">
+          <span class="metric-value" id="metric-academics">0</span>
+          <span class="metric-label">Academics & Fees</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon purple">🏢</div>
+        <div class="metric-info">
+          <span class="metric-value" id="metric-hostel">0</span>
+          <span class="metric-label">Hostel & Campus</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon coral">⏳</div>
+        <div class="metric-info">
+          <span class="metric-value" id="metric-pending">0</span>
+          <span class="metric-label">Pending Action</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls & Filters -->
+    <section class="control-bar" aria-label="Filters and controls">
+      <div class="control-row-top">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Search by student name, email, topic, or message…" autocomplete="off" />
+        </div>
+
+        <div class="filter-group">
+          <select class="filter-select" id="topic-filter">
+            <option value="all">All Topics</option>
+            <option value="admission">Admissions</option>
+            <option value="academics">Academics</option>
+            <option value="hostel">Hostel</option>
+            <option value="fees">Fees & Scholarships</option>
+            <option value="placements">Placements</option>
+            <option value="other">Other</option>
+          </select>
+
+          <select class="filter-select" id="status-filter">
+            <option value="all">All Statuses</option>
+            <option value="new">🔵 New</option>
+            <option value="review">🟡 In Review</option>
+            <option value="contacted">🟣 Contacted</option>
+            <option value="resolved">🟢 Resolved</option>
+          </select>
+
+          <select class="filter-select" id="sort-filter">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-row-bottom">
+        <div class="view-toggle">
+          <button class="view-btn active" id="btn-view-table">📋 Table View</button>
+          <button class="view-btn" id="btn-view-cards">🗂️ Cards View</button>
+        </div>
+
+        <div class="data-actions">
+          <span style="font-size:0.78rem; color:var(--text-muted); margin-right:0.25rem;">
+            Updated: <strong id="last-updated">—</strong>
+          </span>
+          <button class="btn btn-outline btn-sm" id="export-csv-btn">📥 CSV</button>
+          <button class="btn btn-outline btn-sm" id="export-json-btn">💾 JSON</button>
+          <button class="btn btn-outline btn-sm" id="print-btn">🖨️ Print</button>
+          <button class="btn btn-primary btn-sm" id="add-manual-btn">+ Add Record</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Submissions Table View -->
+    <div class="table-wrapper" id="table-wrapper">
+      <table class="submissions-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Topic</th>
+            <th>Message Preview</th>
+            <th>Status</th>
+            <th>Submitted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="submissions-table-body">
+          <!-- Populated dynamically by admin.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cards / Kanban View (Hidden by default) -->
+    <div class="cards-grid" id="cards-container" style="display: none;">
+      <!-- Populated dynamically by admin.js -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <div class="empty-state-icon">📭</div>
+      <h3>No Submissions Found</h3>
+      <p>There are no inquiries matching your criteria or received yet.</p>
+    </div>
+
+  </main>
+
+  <!-- ─── Student Detail Modal ──────────────────────────────── -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Student Inquiry Details</h3>
+        <button class="btn-icon modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-row">
+          <div class="detail-item">
+            <span class="detail-label">Full Name</span>
+            <span class="detail-val" id="modal-student-name">—</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email Address</span>
+            <a href="#" class="detail-val" id="modal-student-email" style="color:var(--au-blue); text-decoration:none;">—</a>
+          </div>
+        </div>
+
+        <div class="modal-row">
+          <div class="detail-item">
+            <span class="detail-label">Subject / Department</span>
+            <span class="detail-val" id="modal-student-subject" style="text-transform: capitalize;">—</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Submission Date & Time</span>
+            <span class="detail-val" id="modal-student-date">—</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Inquiry Message</span>
+          <div class="message-box" id="modal-student-message">—</div>
+        </div>
+
+        <div class="modal-row">
+          <div class="detail-item">
+            <span class="detail-label">Inquiry Status</span>
+            <select class="status-select" id="modal-status-select" style="padding: 0.5rem; font-size: 0.88rem;">
+              <option value="new">🔵 New Inquiry</option>
+              <option value="review">🟡 In Review</option>
+              <option value="contacted">🟣 Contacted / Responded</option>
+              <option value="resolved">🟢 Resolved / Closed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Internal Admin Remarks / Notes</span>
+          <textarea class="notes-input" id="modal-admin-notes" rows="3" placeholder="Add counselor notes, callback dates, or student remarks (saved automatically)…"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline modal-close">Close</button>
+        <a href="#" class="btn btn-primary" id="modal-reply-btn" target="_blank">✉️ Reply via Email</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Settings Modal (Netlify API Config) ───────────────── -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-box" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3>Netlify API Settings</h3>
+        <button class="btn-icon modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.88rem; color:var(--text-secondary);">
+          Submissions are fetched directly via Netlify Forms API.
+        </p>
+
+        <div class="detail-item">
+          <span class="detail-label">Netlify Form ID</span>
+          <input type="text" id="cfg-form-id" class="notes-input" style="font-family:monospace;" />
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Personal Access Token</span>
+          <input type="password" id="cfg-token" class="notes-input" style="font-family:monospace;" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline modal-close">Cancel</button>
+        <button class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Manual Student Entry Modal ───────────────────────── -->
+  <div class="modal-overlay" id="add-student-modal">
+    <div class="modal-box" style="max-width: 540px;">
+      <div class="modal-header">
+        <h3>Record Student Inquiry</h3>
+        <button class="btn-icon modal-close">✕</button>
+      </div>
+      <form id="add-student-form">
+        <div class="modal-body">
+          <div class="detail-item">
+            <span class="detail-label">Full Name *</span>
+            <input type="text" id="manual-name" class="notes-input" required placeholder="e.g. Kushal Patel" />
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Email Address *</span>
+            <input type="email" id="manual-email" class="notes-input" required placeholder="student@example.com" />
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Topic / Department</span>
+            <select id="manual-subject" class="notes-input" style="cursor: pointer;">
+              <option value="admission">Admissions</option>
+              <option value="academics">Academics</option>
+              <option value="hostel">Hostel</option>
+              <option value="fees">Fees & Scholarships</option>
+              <option value="placements">Placements</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-label">Inquiry Message / Notes</span>
+            <textarea id="manual-message" class="notes-input" rows="3" placeholder="Enter student query or details…"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline modal-close">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="alert"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

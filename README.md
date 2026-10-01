@@ -12,6 +12,7 @@ A modern, responsive, and feature-rich campus web portal for **Adani University*
 - **🍱 Food & Dining**: Real-time cafeteria menu filters (breakfast, lunch, snacks, dinner) with pricing, dietary tags, and stalls.
 - **📊 CGPA & SGPA Calculator**: Complete semester-wise GPA calculator, percentage converter, and target CGPA planner.
 - **📅 Class Schedule & Timetable**: Interactive day-wise timetable view for students across batches.
+- **🛡️ Admin Portal (`admin.html`)**: Real-time Netlify Forms integration to view, search, filter, and respond to incoming student inquiries, manage counselor notes, track statuses, and export to CSV/JSON.
 - **🌓 Theme & Accessibility**: Dark/Light mode toggle, smooth animations, and mobile-friendly responsive layout.
 
 ---
@@ -20,9 +21,12 @@ A modern, responsive, and feature-rich campus web portal for **Adani University*
 
 ```
 ├── adani-university/
-│   ├── index.html        # Main HTML structure & semantic layout
-│   ├── style.css         # Modern design system, responsive styles & animations
-│   └── script.js         # Interactive features, calculators, map & dynamic filters
+│   ├── index.html        # Main campus portal (untouched)
+│   ├── style.css         # Campus portal styling & animations
+│   ├── script.js         # Interactive campus features & calculators
+│   ├── admin.html        # Admin portal for student inquiries & submissions
+│   ├── admin.css         # Admin dashboard design system
+│   └── admin.js          # Netlify Forms API integration & submission management
 └── README.md
 ```
 
@@ -30,4 +34,5 @@ A modern, responsive, and feature-rich campus web portal for **Adani University*
 
 ## 🚀 Getting Started
 
-Simply open `adani-university/index.html` in any modern web browser or serve via Live Server / local static server.
+- **Campus Portal**: Open `adani-university/index.html` in any modern web browser.
+- **Admin Portal**: Open `adani-university/admin.html` to view student inquiries and manage submissions.
