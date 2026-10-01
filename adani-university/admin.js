@@ -7,8 +7,10 @@
   'use strict';
 
   // Default Netlify Configuration
+  // Default Netlify Configuration
   const DEFAULT_CONFIG = {
     formId: '6abdd87aae74e90008eecceb',
+    siteId: '2466a684-2e4a-46fd-9f64-933febde329d',
     accessToken: 'nfp_uw5wgCXUqFXVtP8By57Yj7cJH959nHer084e',
     autoRefresh: false
   };
@@ -16,6 +18,7 @@
   // State
   let config = {
     formId: localStorage.getItem('au_admin_form_id') || DEFAULT_CONFIG.formId,
+    siteId: localStorage.getItem('au_admin_site_id') || DEFAULT_CONFIG.siteId,
     accessToken: localStorage.getItem('au_admin_token') || DEFAULT_CONFIG.accessToken
   };
 
@@ -126,18 +129,32 @@
     refreshBtn.querySelector('.btn-text').textContent = 'Fetching…';
 
     try {
-      const url = `https://api.netlify.com/api/v1/forms/${config.formId}/submissions`;
-      const res = await fetch(url, {
-        headers: {
-          'Authorization': `Bearer ${config.accessToken}`
-        }
-      });
+      let liveData = [];
+      const headers = {
+        'Authorization': `Bearer ${config.accessToken}`,
+        'Cache-Control': 'no-cache'
+      };
 
-      if (!res.ok) {
-        throw new Error(`API Error: ${res.status} ${res.statusText}`);
+      // Try site-level endpoint first (fetches all forms for this site)
+      try {
+        const siteUrl = `https://api.netlify.com/api/v1/sites/${config.siteId}/submissions?t=${Date.now()}`;
+        const siteRes = await fetch(siteUrl, { headers, cache: 'no-store' });
+        if (siteRes.ok) {
+          liveData = await siteRes.json();
+        }
+      } catch (e) {
+        console.warn('Site endpoint fetch failed, falling back to form endpoint:', e);
       }
 
-      const liveData = await res.json();
+      // If site-level returned nothing or failed, try specific form endpoint
+      if (!Array.isArray(liveData) || liveData.length === 0) {
+        const formUrl = `https://api.netlify.com/api/v1/forms/${config.formId}/submissions?t=${Date.now()}`;
+        const formRes = await fetch(formUrl, { headers, cache: 'no-store' });
+        if (formRes.ok) {
+          liveData = await formRes.json();
+        }
+      }
+
       statusIndicator.querySelector('.status-dot').className = 'status-dot';
       statusIndicator.querySelector('span:last-child').textContent = 'Connected (Netlify)';
 
@@ -152,7 +169,7 @@
 
       lastUpdatedEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
       renderData();
-      showToast('Data refreshed successfully');
+      showToast(`Loaded ${liveData.length} live submissions from Netlify`);
     } catch (err) {
       console.error('Failed to fetch from Netlify:', err);
       statusIndicator.querySelector('.status-dot').className = 'status-dot error';
@@ -180,10 +197,10 @@
 
     let filtered = allSubmissions.filter(item => {
       const data = item.data || {};
-      const name = (data.name || item.name || '').toLowerCase();
-      const email = (data.email || item.email || '').toLowerCase();
-      const subj = (data.subject || '').toLowerCase();
-      const msg = (data.message || item.summary || item.body || '').toLowerCase();
+      const name = (data.name || data['Full Name'] || item.name || item.title || '').toLowerCase();
+      const email = (data.email || data.Email || item.email || '').toLowerCase();
+      const subj = (data.subject || data.Subject || '').toLowerCase();
+      const msg = (data.message || data.Message || item.summary || item.body || '').toLowerCase();
 
       // Search match
       if (q && !name.includes(q) && !email.includes(q) && !subj.includes(q) && !msg.includes(q)) {
@@ -279,10 +296,10 @@
   function renderTable(list, overrides) {
     tableBody.innerHTML = list.map((item, idx) => {
       const data = item.data || {};
-      const name = data.name || item.name || 'Anonymous Student';
-      const email = data.email || item.email || 'No email';
-      const subject = data.subject || 'other';
-      const message = data.message || item.summary || item.body || '(No message content)';
+      const name = data.name || data['Full Name'] || item.name || item.title || 'Anonymous Student';
+      const email = data.email || data.Email || item.email || 'No email';
+      const subject = data.subject || data.Subject || 'other';
+      const message = data.message || data.Message || item.body || item.summary || '(No message content)';
       const dateStr = formatRelativeTime(item.created_at);
       const initial = name.charAt(0).toUpperCase();
 
@@ -329,10 +346,10 @@
   function renderCards(list, overrides) {
     cardsContainer.innerHTML = list.map(item => {
       const data = item.data || {};
-      const name = data.name || item.name || 'Anonymous Student';
-      const email = data.email || item.email || 'No email';
-      const subject = data.subject || 'other';
-      const message = data.message || item.summary || item.body || '(No message content)';
+      const name = data.name || data['Full Name'] || item.name || item.title || 'Anonymous Student';
+      const email = data.email || data.Email || item.email || 'No email';
+      const subject = data.subject || data.Subject || 'other';
+      const message = data.message || data.Message || item.body || item.summary || '(No message content)';
       const dateStr = formatRelativeTime(item.created_at);
       const initial = name.charAt(0).toUpperCase();
 
@@ -376,10 +393,10 @@
     if (!item) return;
 
     const data = item.data || {};
-    const name = data.name || item.name || 'Anonymous Student';
-    const email = data.email || item.email || 'No email';
-    const subject = data.subject || 'other';
-    const message = data.message || item.summary || item.body || '(No message content)';
+    const name = data.name || data['Full Name'] || item.name || item.title || 'Anonymous Student';
+    const email = data.email || data.Email || item.email || 'No email';
+    const subject = data.subject || data.Subject || 'other';
+    const message = data.message || data.Message || item.body || item.summary || '(No message content)';
     const fullDate = new Date(item.created_at).toLocaleString();
 
     const overrides = getLocalOverrides();

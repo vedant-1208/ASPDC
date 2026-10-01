@@ -588,19 +588,40 @@ function initContactForm() {
   const success = document.getElementById('form-success');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('[type="submit"]');
+    const originalText = btn.textContent;
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    setTimeout(() => {
-      success.hidden = false;
-      form.reset();
-      btn.textContent = 'Send Message 🚀';
+    const formData = new FormData(form);
+    if (!formData.get('form-name')) {
+      formData.append('form-name', 'contact');
+    }
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (res.ok || res.status === 200 || res.status === 302) {
+        success.hidden = false;
+        form.reset();
+        setTimeout(() => { success.hidden = true; }, 7000);
+      } else {
+        // Fallback standard submit if AJAX failed
+        form.submit();
+      }
+    } catch (err) {
+      console.error('Submission failed, attempting standard submit', err);
+      form.submit();
+    } finally {
+      btn.textContent = originalText;
       btn.disabled = false;
-      setTimeout(() => { success.hidden = true; }, 6000);
-    }, 1200);
+    }
   });
 }
 
